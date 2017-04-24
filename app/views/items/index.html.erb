@@ -1,0 +1,24 @@
+<div class="container">
+  <h4>Welcome to BlocItOff! Let's start working <%= current_user.email %>!</h4>
+</div>
+<div class="col-md-8">
+    <%= form_for Item.new do |f| %>
+    <div class="form-group">
+      <%= f.label :To_Do %>
+      <%= f.text_field :name, class: 'form-control', placeholder: "Enter a title." %>
+
+    </div>
+    <%= f.submit "Save", class: 'btn btn-success' %>
+     <% end %>
+</div>
+<div class="col-md-8">
+ <h1>To Do</h1>
+
+ <% @items.each do |item| %>
+   <p><%= link_to item.name, item_path(item.id) %></p><%= item.user.email %>
+    <small class="time-ago">created <%= distance_of_time_in_words(Time.now, item.created_at) %> ago</small>
+ <% end %>
+</div>
+
+
+
