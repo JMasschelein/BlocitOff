@@ -15,8 +15,9 @@
  <h1>To Do</h1>
 
  <% @items.each do |item| %>
-    <small class="time-ago">created <%= distance_of_time_in_words(Time.now, item.created_at) %> ago</small>
-    <p><%= link_to item.name, item_path(item.id) %>
+    <small class="time-ago">The deadline is in <%= time_ago_in_words(item.created_at + 7.day)  %></small>
+    
+      <p><%= link_to item.name, item_path(item.id) %></p>
     <p>Complete: <%= link_to "", item, method: :delete, class: 'glyphicon glyphicon-ok' %></p>
  <% end %>
 </div>
